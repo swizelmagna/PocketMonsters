@@ -48,7 +48,7 @@ const closeModal = () => emit('close');
 </script>
 
 <template>
-    <div v-if="show" class="modal-overlay">
+    <div v-if="props.show" class="modal-overlay">
         <div class="modal">
             <header>
                 <h2>Pokédex</h2>

@@ -10,7 +10,7 @@ const eventLogs = computed(() => store.eventLogs);
 <template>
     <div class="event-log">
         <h2>Event Log</h2>
-        <div v-for="logMessage in eventLogs" class="log">{{ logMessage }}</div>
+        <div v-for="(logMessage, index) in eventLogs" :key="index" class="log">{{ logMessage }}</div>
     </div>
 </template>
 <style lang="scss" scoped>

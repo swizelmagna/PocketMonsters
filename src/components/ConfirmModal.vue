@@ -13,9 +13,9 @@ const onCancel = () => emit('cancel');
 </script>
 
 <template>
-    <div v-if="show" class="modal-overlay">
+    <div v-if="props.show" class="modal-overlay">
         <div class="modal">
-            <p>{{ message }}</p>
+            <p>{{ props.message }}</p>
             <button class="primary" @click="onConfirm">Yes</button>
             <button class="secondary" @click="onCancel">No</button>
         </div>
