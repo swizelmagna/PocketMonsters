@@ -1,0 +1,67 @@
+:root {
+  --primary: #333242;
+  --secondary: #DC443C;
+  --accent: #5469A5;
+  --white: #ffffff;
+
+  --background: #e2e8f0;
+  --foreground: #0b0f1a;
+  --text: #020817;
+  --text-grey: #64748b;
+
+  --btn-primary-bg: var(--accent);
+  --btn-secondary-bg: var(--secondary);
+  --btn-color: var(--white);
+  --btn-disabled-bg: #ccc;
+
+  --font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+$primary: var(--primary);
+$secondary: var(--secondary);
+$accent: var(--accent);
+$white: var(--white);
+$text-grey: var(--text-grey);
+$text-grey-light: var(--background);
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family);
+  margin: 0;
+}
+
+@mixin btn($bg) {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: $bg;
+  color: var(--btn-color);
+  cursor: pointer;
+  transition: background 0.3s, outline 0.2s;
+  margin: 10px;
+
+  &:hover:not(:disabled) {
+    filter: brightness(90%);
+  }
+
+  &:focus {
+    outline: 3px solid var(--foreground);
+    outline-offset: 3px;
+  }
+
+  &:disabled {
+    background: var(--btn-disabled-bg);
+    cursor: not-allowed;
+  }
+}
+
+button {
+  @include btn(var(--btn-primary-bg));
+}
+
+button.secondary {
+  @include btn(var(--btn-secondary-bg));
+}
