@@ -1,19 +1,15 @@
 :root {
-  --primary: #333242;
-  --secondary: #DC443C;
-  --accent: #5469A5;
+  --primary: #f42054;
+  --secondary: #d8d8d8;
+  --accent: #43356b;
   --white: #ffffff;
-
   --background: #e2e8f0;
-  --foreground: #0b0f1a;
   --text: #020817;
   --text-grey: #64748b;
-
+  --text-light: #cbd5e1;
   --btn-primary-bg: var(--accent);
   --btn-secondary-bg: var(--secondary);
-  --btn-color: var(--white);
   --btn-disabled-bg: #ccc;
-
   --font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -25,8 +21,8 @@ $text-grey: var(--text-grey);
 $text-grey-light: var(--background);
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--accent);
+  color: var(--white);
   font-family: var(--font-family);
   margin: 0;
 }
@@ -38,7 +34,7 @@ body {
   border: none;
   border-radius: 8px;
   background: $bg;
-  color: var(--btn-color);
+  color: var(----white);
   cursor: pointer;
   transition: background 0.3s, outline 0.2s;
   margin: 10px;
@@ -48,7 +44,7 @@ body {
   }
 
   &:focus {
-    outline: 3px solid var(--foreground);
+    outline: 3px solid var(--text);
     outline-offset: 3px;
   }
 

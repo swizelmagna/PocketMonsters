@@ -9,9 +9,7 @@ const router = useRouter();
 const trainerName = ref('');
 const selectedGen = ref(store.generation);
 
-const started = ref(false);
 const moved = ref(false);
-const gameStarted = ref(false);
 const hasSavedData = ref(false);
 
 onMounted(() => {
@@ -30,16 +28,15 @@ const startGame = () => {
     store.setName(trainerName.value);
     store.generation = selectedGen.value;
     store.fetchPokemons(selectedGen.value);
+    store.gameStarted = true;
 
     hasSavedData.value = true;
-    started.value = true;
 
     setTimeout(() => {
         moved.value = true;
     }, 500);
 
     setTimeout(() => {
-        gameStarted.value = true;
         router.push('/capture');
     }, 1300);
 };
@@ -47,8 +44,6 @@ const startGame = () => {
 
 <template>
     <main class="home">
-        <h1 :class="{ started, moved }">{{ store.title }}</h1>
-
         <form
             id="form-registration"
             @submit.prevent="startGame"
@@ -86,31 +81,22 @@ const startGame = () => {
     text-align: center;
     position: relative;
 
-    h1 {
-        font-size: 64px;
-        font-weight: bold;
-        margin-bottom: 32px;
-        transform: translateY(0) scale(1);
-        transform-origin: center center;
-        transition: transform 0.5s ease;
-        will-change: transform;
-    }
-
-    h1.started {
-        transform: translateY(0) scale(0.5);
-        transition-duration: 0.5s;
-    }
-
-    h1.moved {
-        transform: translateY(-50vh) scale(0.5);
-        transition: transform 0.6s ease;
-    }
-
     form {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 16px;
         transition: opacity 0.8s ease;
+        bottom: 0;
+        position: absolute;
+        border: 2px solid var(--white);
+        padding: 10px;
+        border-radius: 4px;
+        border: 2px solid;
+
+        @media (max-width: 600px) {
+            flex-flow: column;
+            margin-bottom: 5px;
+        }
 
         input,
         select {
@@ -127,10 +113,10 @@ const startGame = () => {
             font-weight: bold;
             border: none;
             border-radius: 8px;
-            cursor: pointer;
             background-color: var(--accent);
             color: var(--btn-color);
             transition: background 0.3s ease;
+            margin: 0;
 
             &:hover:enabled {
                 filter: brightness(90%);
@@ -138,7 +124,6 @@ const startGame = () => {
 
             &:disabled {
                 background: #ccc;
-                cursor: not-allowed;
             }
         }
     }

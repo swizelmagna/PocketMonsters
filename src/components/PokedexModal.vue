@@ -152,7 +152,8 @@ const closeModal = () => emit('close');
         h2 {
             font-size: 1.8rem;
             margin: 0;
-            color: var(--secondary);
+            color: var(--primary);
+            text-shadow: 2px 1px 1px black;
         }
 
         p {
@@ -247,7 +248,7 @@ const closeModal = () => emit('close');
             .info h3 {
                 margin: 4px 0;
                 text-transform: capitalize;
-                color: var(--secondary);
+                color: var(--primary);
             }
 
             .info p {
@@ -266,7 +267,6 @@ const closeModal = () => emit('close');
             font-weight: bold;
             border-radius: 6px;
             border: none;
-            cursor: pointer;
             background: var(--accent);
             color: var(--white);
             transition: background 0.3s;

@@ -1,14 +1,19 @@
 <script setup>
+import { onMounted } from 'vue';
 import { useGameStore } from '@/stores/gameSetupStore';
 import ViewFinder from '@/components/ViewFinder.vue';
 import EventLog from '@/components/EventLog.vue';
 import GameControls from '@/components/GameControls.vue';
 
 const store = useGameStore();
+
+onMounted(() => {
+  store.gameStarted = true; // ensures title moves/shrinks if we refresh here
+});
+
 </script>
 <template>
     <main>
-        <h1>{{ store.title }}</h1>
         <div class="game" style="display: flex; gap: 1rem">
             <ViewFinder class="item" />
             <EventLog class="item" />
@@ -26,6 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    padding-top: 70px;
 
     h1 {
         text-align: center;

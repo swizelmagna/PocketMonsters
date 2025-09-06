@@ -15,13 +15,24 @@ const eventLogs = computed(() => store.eventLogs);
 </template>
 <style lang="scss" scoped>
 .event-log {
-    border: 3px solid var(--accent);
+    border: 3px solid var(--white);
     border-radius: 8px;
     background: #33324226;
     padding: 1rem;
     overflow-y: auto;
     font-size: 1rem;
-    color: var(--primary);
+    color: var(--text-light);
+
+    h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1.5rem;
+        color: var(--secondary);
+        text-transform: uppercase;
+        text-align: center;
+        background-color: var(--accent);
+        border-radius: 4px;
+        padding: 5px;
+    }
 }
 .log {
     background: #5469a54d;

@@ -2,11 +2,12 @@ import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 
 export const useGameStore = defineStore('game', () => {
-    const title = ref('Capture Pocket Monsters!');
+    const title = ref('Pocket Monsters!');
     const generation = ref(1);
     const pokemons = ref([]);
     const loading = ref(false);
     const error = ref(null);
+    const gameStarted = ref(false);
 
     const trainerName = ref(localStorage.getItem('trainerName') || '');
 
@@ -50,6 +51,7 @@ export const useGameStore = defineStore('game', () => {
         error,
         fetchPokemons,
         trainerName,
-        setName
+        setName,
+        gameStarted
     };
 });
