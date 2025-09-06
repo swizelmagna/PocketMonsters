@@ -38,7 +38,6 @@ const sortedPokemon = computed(() => {
     });
 });
 
-// Summary info
 const uniqueCount = computed(() => sortedPokemon.value.length);
 const totalCount = computed(() =>
     sortedPokemon.value.reduce((acc, p) => acc + p.count, 0)

@@ -153,7 +153,6 @@ const resetEncounter = () => {
             <button name="btn-quit" @click.prevent="showQuitModal = true" aria-label="Quit game">
                 Quit
             </button>
-            <PokedexModal :show="showPokedex" @close="showPokedex = false" ref="pokedexRef"/>
             <ConfirmModal
                 :show="showQuitModal"
                 message="Are you sure you want to quit the game?"
