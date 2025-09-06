@@ -55,7 +55,7 @@ const getPokeData = (id) => {
         .then((res) => res.json())
         .then((data) => {
             stats.value = data.stats;
-            imgSrc.value = data.sprites.front_default || data.sprites.other.dream_world.front_default;
+            imgSrc.value = data.sprites.other.dream_world.front_default || data.sprites.front_default;
             types.value = data.types.map((t) => t.type.name);
             height.value = data.height;
             store.updateEncoutnerDetails({
@@ -71,11 +71,10 @@ const getPokeData = (id) => {
 <style lang="scss" scoped>
 .viewfinder {
     align-items: flex-start;
-    gap: 1rem;
-    border: 3px solid var(--accent);
+    border: 3px solid var(--white);
     border-radius: 8px;
     background: var(--primary);
-    color: var(--background);
+    color: var(--white);
     padding: 1rem;
     min-height: 250px;
 
@@ -99,8 +98,10 @@ const getPokeData = (id) => {
     flex: 0 0 50%;
     display: flex;
     justify-content: center;
-
+    background-color: var(--accent);
+    border-radius: 5px 0 0 5px;
     @media (max-width: 600px) {
+        border-radius: 5px 5px 0 0;
         width: 100%;
     }
 }
@@ -108,16 +109,26 @@ const getPokeData = (id) => {
 .image {
     max-width: 90%;
     max-height: 250px;
+    margin: 10px;
+    @media (max-width: 600px) {
+        max-height: 100px;
+    }
 }
 
 .details {
     flex: 1;
-    margin: 0 0 0.5rem;
     color: var(--text);
     text-transform: capitalize;
     background-color: var(--btn-disabled-bg);
     border-radius: 4px;
     padding: 15px;
+    border-radius: 0 5px 5px 0;
+
+    @media (max-width: 600px) {
+        border-radius: 0 0 5px 5px;
+        padding: 0;
+        width: 100%;
+    }
 
     ul {
         list-style: none;
@@ -144,7 +155,7 @@ const getPokeData = (id) => {
     color: var(--secondary);
     text-transform: uppercase;
     text-align: center;
-    background-color: var(--btn-disabled-bg);
+    background-color: var(--accent);
     border-radius: 4px;
     padding: 5px;
 }

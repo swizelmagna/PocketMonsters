@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, nextTick } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useGameStore } from '@/stores/gameSetupStore';
 import { usePokemonStore } from '@/stores/pokemonStore';
@@ -9,6 +9,7 @@ import PokedexModal from '@/components/PokedexModal.vue';
 const gameStore = useGameStore();
 const pokemonStore = usePokemonStore();
 const router = useRouter();
+
 const showQuitModal = ref(false);
 const showPokedex = ref(false);
 const foundPokemon = ref(null);
@@ -31,13 +32,6 @@ const isFindDisabled = computed(
 const isThrowDisabled = computed(() => !foundPokemon.value);
 const isIgnoreDisabled = computed(() => {
     return !foundPokemon.value || pokemonStore.isThrowing;
-});
-
-watch(showPokedex, async (visible) => {
-  if (visible) {
-    await nextTick();
-    pokedexRef.value?.$el.querySelector('button')?.focus();
-  }
 });
 
 const findPokemon = () => {
@@ -166,7 +160,7 @@ const resetEncounter = () => {
 <style lang="scss" scoped>
 #form-controls {
     fieldset {
-        border: 2px solid var(--accent);
+        border: 2px solid var(--white);
         border-radius: 8px;
         display: flex;
         gap: 0.5rem;
@@ -176,9 +170,9 @@ const resetEncounter = () => {
         button {
             padding: 0.5rem 1rem;
             font-size: 1rem;
-            cursor: pointer;
             transition: background 0.3s;
-            flex: auto;
+            flex: 1 1 auto;
+            border: 2px solid var(--text-light);
         }
     }
 }

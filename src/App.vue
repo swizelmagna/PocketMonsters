@@ -1,9 +1,9 @@
-<script setup>
-import { RouterView } from 'vue-router';
-</script>
-
 <template>
-    <RouterView />
+  <DefaultLayout>
+    <router-view />
+  </DefaultLayout>
 </template>
 
-<style scoped lang="scss"></style>
+<script setup>
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+</script>
